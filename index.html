@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To BRO, with Love</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #0d0d0d;
+      color: #f3f3f3;
+      overflow-x: hidden;
+      position: relative;
+    }
+    header {
+      background: linear-gradient(to right, #111, #222);
+      padding: 60px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5em;
+      color: #ffcccb;
+    }
+    header p {
+      font-size: 1em;
+      color: #bbb;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 30px 15px;
+      gap: 20px;
+    }
+    .gallery img {
+      width: 90%;
+      max-width: 250px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #444;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .love-letter {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #1a1a1a;
+      border-left: 5px solid #ffcccb;
+      border-radius: 8px;
+      font-size: 1.1em;
+      line-height: 1.7;
+      margin-bottom: 60px;
+    }
+    .love-letter h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      color: #ffcccb;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: #888;
+      font-size: 0.9em;
+    }
+
+    /* Floating hearts animation */
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: float 8s infinite ease-in;
+      opacity: 0.6;
+      z-index: 0;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes float {
+      0% {
+        bottom: 0;
+        opacity: 0.6;
+      }
+      100% {
+        bottom: 100%;
+        left: calc(100% * var(--random-x));
+        opacity: 0;
+      }
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+      .love-letter {
+        padding: 15px;
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop volume="0.5">
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <header>
+    <h1>To BRO, With All My Heart</h1>
+    <p>A love letter from David</p>
+  </header>
+
+  <section class="gallery">
+    <img src="photo/p1.jpg" alt="Photo 1">
+    <img src="photo/p2.jpg" alt="Photo 2">
+    <img src="photo/p3.jpg" alt="Photo 3">
+  </section>
+
+  <section class="love-letter">
+    <h2>My Dearest BRO,</h2>
+    <p>
+      Every time I look at you, I see beauty beyond words. Your eyes — deep, gentle, and full of warmth — hold a universe that I get lost in. Your nose, perfectly shaped, makes me smile with admiration, and your forehead, so serene, reminds me of peace and quiet nights under the stars.
+    </p>
+    <p>
+      I created this little corner of the internet just for you, to celebrate everything that makes you special. Your presence fills my life with joy, your photos are pieces of art, and your soul is my favorite thing in the world.
+    </p>
+    <p>
+      No matter where we are, no matter how far, this space will always hold my love for you. This is just the beginning — there's so much more I want to share, to create, and to experience with you.
+    </p>
+    <p>
+      With all my love,<br />
+      <strong>David ❤️</strong>
+    </p>
+  </section>
+
+  <footer>
+    © 2025 With Love from David to BRO
+  </footer>
+
+  <!-- Generate floating hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.setProperty('--random-x', Math.random());
+      heart.style.animationDuration = 6 + Math.random() * 4 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+    setInterval(createHeart, 400);
+  </script>
+
+</body>
+</html>
